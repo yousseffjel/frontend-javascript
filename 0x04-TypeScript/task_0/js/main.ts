@@ -1,42 +1,53 @@
 interface Student {
-    firstName: string;
-    lastName: string;
-    age: number;
-    location: string;
+  firstName: string;
+  lastName: string;
+  age: number;
+  location: string;
 }
 
 const student1: Student = {
-    firstName: "John",
-    lastName: "Doe",
-    age: 20,
-    location: "New York"
+  firstName: "Adnane",
+  lastName: "Bachchar",
+  age: 30,
+  location: "Morocco",
 };
 
 const student2: Student = {
-    firstName: "Jane",
-    lastName: "Smith",
-    age: 22,
-    location: "Los Angeles"
+  firstName: "Mouad",
+  lastName: "Bachchar",
+  age: 36,
+  location: "Morocco",
 };
 
 const studentsList: Student[] = [student1, student2];
 
+// Create table and append rows
 const table = document.createElement("table");
-const tbody = document.createElement("tbody");
+const tableHead = document.createElement("thead");
+const headerRow = document.createElement("tr");
 
+["First Name", "Location"].forEach((heading) => {
+  const th = document.createElement("th");
+  th.textContent = heading;
+  headerRow.appendChild(th);
+});
+tableHead.appendChild(headerRow);
+table.appendChild(tableHead);
+
+const tableBody = document.createElement("tbody");
 studentsList.forEach((student) => {
-    const row = document.createElement("tr");
+  const row = document.createElement("tr");
 
-    const firstNameCell = document.createElement("td");
-    firstNameCell.textContent = student.firstName;
+  const firstNameCell = document.createElement("td");
+  firstNameCell.textContent = student.firstName;
 
-    const localtionCell = document.createElement("td");
-    localtionCell.textContent = student.location;
+  const locationCell = document.createElement("td");
+  locationCell.textContent = student.location;
 
-    row.append(firstNameCell);
-    row.append(localtionCell);
-    tbody.append(row);
+  row.appendChild(firstNameCell);
+  row.appendChild(locationCell);
+  tableBody.appendChild(row);
 });
 
-table.appendChild(tbody);
+table.appendChild(tableBody);
 document.body.appendChild(table);
